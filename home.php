@@ -36,6 +36,7 @@ if(!isset($_SESSION['user']))
 	
 	<a href='http://edwardsdean.net/jcu/limesurvey/index.php/764745?lang=en?UserID=<?php echo $_SESSION['user'] ?>'>Take Survey</a>
 	
+	<h2>My Results</h2>
 	
 	
 </div>

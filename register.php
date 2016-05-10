@@ -25,7 +25,7 @@ if(isset($_POST['btn-signup']))
 	
 	if($count == 0){
 		
-		if(mysql_query("INSERT INTO users(user_name,user_email,user_pass) VALUES('$uname','$email','$upass')"))
+		if(mysql_query("INSERT INTO users(user_name,user_email,user_pass, school_id) VALUES('$uname','$email','$upass', 0)"))
 		{
 			?>
 			<script>alert('successfully registered ');</script>
