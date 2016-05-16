@@ -5,13 +5,14 @@ if(isset($_SESSION['user'])!="")
 {
 	header("Location: home.php");
 }
+include_once 'include/functions.php';
 include_once 'dbconnect.php';
 
 if(isset($_POST['btn-signup']))
 {
-	$uname = mysql_real_escape_string($_POST['uname']);
-	$email = mysql_real_escape_string($_POST['email']);
-	$upass = md5(mysql_real_escape_string($_POST['pass']));
+	$uname = escape($_POST['uname']);
+	$email = escape($_POST['email']);
+	$upass = md5(escape($_POST['pass']));
 	
 	$uname = trim($uname);
 	$email = trim($email);
@@ -19,13 +20,17 @@ if(isset($_POST['btn-signup']))
 	
 	// email exist or not
 	$query = "SELECT user_email FROM users WHERE user_email='$email'";
-	$result = mysql_query($query);
+	$sth=$dbh->prepare($query);
+	$sth->execute();
+	$count = $sth->fetchAll();   // if email not found then register
 	
-	$count = mysql_num_rows($result); // if email not found then register
 	
-	if($count == 0){
+	if(empty($count)){
+		$sql = "INSERT INTO users(user_name,user_email,user_pass, school_id) VALUES('$uname','$email','$upass', 0)";
+		$sth = $dbh->prepare($sql);
+		$sql_success = $sth->execute();
 		
-		if(mysql_query("INSERT INTO users(user_name,user_email,user_pass, school_id) VALUES('$uname','$email','$upass', 0)"))
+		if($sql_success)
 		{
 			?>
 			<script>alert('successfully registered ');</script>
@@ -60,7 +65,7 @@ if(isset($_POST['btn-signup']))
 <form method="post">
 <table align="center" width="30%" border="0">
 <tr>
-<td><input type="text" name="uname" placeholder="User Name" required /></td>
+<td><input type="text" name="uname" placeholder="Full Name" required /></td>
 </tr>
 <tr>
 <td><input type="email" name="email" placeholder="Your Email" required /></td>
