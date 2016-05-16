@@ -13,5 +13,15 @@ function escape($value) {
     return $return;
 }
 
-
+function get_column_color($value){
+	if ($value < 3){
+		return '#ea423d';
+	}
+	elseif ($value < 4){
+		return '#f1d71e';
+	}
+	else{
+		return '#44c51f';
+	}
+}
 ?>

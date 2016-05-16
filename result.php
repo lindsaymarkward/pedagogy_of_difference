@@ -2,6 +2,7 @@
 session_name('main_site');
 session_start();
 include_once 'dbconnect.php';
+include_once 'include/functions.php';
 
 if(!isset($_SESSION['user']))
 {
@@ -25,14 +26,14 @@ if(!isset($_SESSION['user']))
 </head>
 <body>
 <?php
-include 'include\header.php';
+include 'include/header.php';
 ?>
 
 
 <div id="body">
 	
 	<h2><a href='index.php'>Home</a></h2>
-	<a href='http://edwardsdean.net/jcu/limesurvey/index.php/764745?lang=en?UserID=<?php echo $_SESSION['user'] ?>'>Take Survey</a>
+	<h2><a href='http://edwardsdean.net/jcu/limesurvey/index.php/764745?lang=en?UserID=<?php echo $_SESSION['user'] ?>'>Take Survey</a></h2>
 	
 	<h2><a href='results.php'>My Results</a></h2>
 	
@@ -74,7 +75,8 @@ include 'include\header.php';
             crosshair: true
         },
         yAxis: {
-            min: 0,
+            min: 1,
+			max: 5,
             title: {
                 text: 'Score'
             }
@@ -95,7 +97,14 @@ include 'include\header.php';
         },
         series: [{
             name: 'Score',
-            data: [<?php echo $survey_info['historic_survey_data_AVG_A']; ?>, <?php echo $survey_info['historic_survey_data_AVG_B']; ?>, <?php echo $survey_info['historic_survey_data_AVG_C']; ?>, <?php echo $survey_info['historic_survey_data_AVG_D']; ?>, <?php echo $survey_info['historic_survey_data_AVG_E']; ?>, <?php echo $survey_info['historic_survey_data_AVG_F']; ?>, <?php echo $survey_info['historic_survey_data_AVG_G']; ?>]
+            data: [{ y: <?php echo $survey_info['historic_survey_data_AVG_A']; ?>, color: '<?php echo get_column_color($survey_info['historic_survey_data_AVG_A']);?>'}, 
+			{ y: <?php echo $survey_info['historic_survey_data_AVG_B']; ?>, color: '<?php echo get_column_color($survey_info['historic_survey_data_AVG_B']);?>'},
+			{ y: <?php echo $survey_info['historic_survey_data_AVG_C']; ?>, color: '<?php echo get_column_color($survey_info['historic_survey_data_AVG_C']);?>'},
+			{ y: <?php echo $survey_info['historic_survey_data_AVG_D']; ?>, color: '<?php echo get_column_color($survey_info['historic_survey_data_AVG_D']);?>'},
+			{ y: <?php echo $survey_info['historic_survey_data_AVG_E']; ?>, color: '<?php echo get_column_color($survey_info['historic_survey_data_AVG_E']);?>'},
+			{ y: <?php echo $survey_info['historic_survey_data_AVG_F']; ?>, color: '<?php echo get_column_color($survey_info['historic_survey_data_AVG_F']);?>'},
+			{ y: <?php echo $survey_info['historic_survey_data_AVG_G']; ?>, color: '<?php echo get_column_color($survey_info['historic_survey_data_AVG_G']);?>'}
+			]
 
         }]
     });
