@@ -17,10 +17,11 @@ if(isset($_POST['btn-login']))
 	$email = trim($email);
 	$upass = trim($upass);
 	
-	$sql = "SELECT user_id, user_name, user_pass FROM users WHERE user_email='$email'";
+	$sql = "SELECT user_id, user_name, user_pass, user_type FROM users WHERE user_email='$email'";
 	$sth=$dbh->prepare($sql);
 	$sth->execute();
 	$row = $sth->fetchAll();
+	print_r($row);
 	
 	
 	
@@ -29,6 +30,7 @@ if(isset($_POST['btn-login']))
 	if(!empty($row) && $row[0]['user_pass']==md5($upass))
 	{
 		$_SESSION['user'] = $row[0]['user_id'];
+		$_SESSION['user_type'] = $row[0]['user_type'];
 		header("Location: home.php");
 	}
 	else

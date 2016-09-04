@@ -20,7 +20,7 @@ if(!isset($_SESSION['user']))
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>My Results - <?php echo $userRow['user_email']; ?></title>
+<title>School Results</title>
 <link rel="stylesheet" href="style.css" type="text/css" />
 
 </head>
@@ -34,15 +34,19 @@ include 'include/nav.php';
 <div id="body">
 	
 	<?php
-		$sql = "SELECT * FROM historic_survey_data WHERE historic_survey_data_id=".$_GET['survey_id']; 
-		//print($sql);
-		
+		$sql = "SELECT * FROM historic_school_survey_data WHERE historic_school_survey_data_id=".$_GET['school_survey_id']; 
 		$sth=$dbh->prepare($sql);
 		$sth->execute();
 		$survey_info = $sth->fetchAll();
 		$survey_info = $survey_info[0];
-		
 		//print_r($survey_info);
+		
+		$sql = "SELECT * FROM schools WHERE school_id=".$survey_info['school_id']; 
+		$sth=$dbh->prepare($sql);
+		$sth->execute();
+		$school= $sth->fetchAll();
+		$school_name = $school[0]['school_name'];
+		
 		
 		?>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -53,10 +57,10 @@ include 'include/nav.php';
             type: 'column'
         },
         title: {
-            text: 'Pedagogy of Difference'
+            text: 'Pedagogy of Difference - <?php echo $school_name;?>'
         },
         subtitle: {
-            text: 'Results from - <?php echo $survey_info['time_finished']; ?>'
+            text: 'Result from - <?php echo $survey_info['time_processed']; ?>, Amount of users - <?php echo $survey_info['num_of_users']; ?>'
         },
         xAxis: {
             categories: [
@@ -93,13 +97,13 @@ include 'include/nav.php';
         },
         series: [{
             name: 'Score',
-            data: [{ y: <?php echo $survey_info['historic_survey_data_AVG_A']; ?>, color: '<?php echo get_column_color($survey_info['historic_survey_data_AVG_A']);?>'}, 
-			{ y: <?php echo $survey_info['historic_survey_data_AVG_B']; ?>, color: '<?php echo get_column_color($survey_info['historic_survey_data_AVG_B']);?>'},
-			{ y: <?php echo $survey_info['historic_survey_data_AVG_C']; ?>, color: '<?php echo get_column_color($survey_info['historic_survey_data_AVG_C']);?>'},
-			{ y: <?php echo $survey_info['historic_survey_data_AVG_D']; ?>, color: '<?php echo get_column_color($survey_info['historic_survey_data_AVG_D']);?>'},
-			{ y: <?php echo $survey_info['historic_survey_data_AVG_E']; ?>, color: '<?php echo get_column_color($survey_info['historic_survey_data_AVG_E']);?>'},
-			{ y: <?php echo $survey_info['historic_survey_data_AVG_F']; ?>, color: '<?php echo get_column_color($survey_info['historic_survey_data_AVG_F']);?>'},
-			{ y: <?php echo $survey_info['historic_survey_data_AVG_G']; ?>, color: '<?php echo get_column_color($survey_info['historic_survey_data_AVG_G']);?>'}
+            data: [{ y: <?php echo $survey_info['AVG_A']; ?>, color: '<?php echo get_column_color($survey_info['AVG_A']);?>'}, 
+			{ y: <?php echo $survey_info['AVG_B']; ?>, color: '<?php echo get_column_color($survey_info['AVG_B']);?>'},
+			{ y: <?php echo $survey_info['AVG_C']; ?>, color: '<?php echo get_column_color($survey_info['AVG_C']);?>'},
+			{ y: <?php echo $survey_info['AVG_D']; ?>, color: '<?php echo get_column_color($survey_info['AVG_D']);?>'},
+			{ y: <?php echo $survey_info['AVG_E']; ?>, color: '<?php echo get_column_color($survey_info['AVG_E']);?>'},
+			{ y: <?php echo $survey_info['AVG_F']; ?>, color: '<?php echo get_column_color($survey_info['AVG_F']);?>'},
+			{ y: <?php echo $survey_info['AVG_G']; ?>, color: '<?php echo get_column_color($survey_info['AVG_G']);?>'}
 			]
 
         }]

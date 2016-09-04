@@ -20,18 +20,18 @@ function average($arr)
 <html>
    <head>
       <meta charset="utf-8">
-      <title>Project Management</title>
+      <title>Pedagogy of Difference</title>
       <link href="mainstyles.css" rel="stylesheet" type="text/css">
       <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.--><script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/arimo:n4:default.js" type="text/javascript"></script>
    </head>
    <body>
       <div id="wrapper">
          <header>
-            <h1> Project Management </h1>   
+            <h1> Pedagogy of Difference </h1>   
          </header>
          <div id="mainbody">
             <p>Thank you for taking the survey</p>
-			<p>This is a Temp Landing page</p>
+			<br><br>
 			<h2>Please wait while we process your results</h2> 
 			<!-- loading bar code http://projects.lukehaas.me/css-loaders/ -->
 			<div class="loader">Loading...</div>

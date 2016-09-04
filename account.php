@@ -1,0 +1,109 @@
+<?php
+session_name('main_site');
+session_start();
+include_once 'dbconnect.php';
+
+if(!isset($_SESSION['user']))
+{
+	header("Location: index.php");
+} else {
+	$sql = "SELECT * FROM users WHERE user_id=".$_SESSION['user'];
+	$sth=$dbh->prepare($sql);
+	$sth->execute();
+	$userRow = $sth->fetchAll();
+	$userRow = $userRow[0];
+}
+
+if(isset($_POST['btn-save-school']))
+{
+	
+	
+	$sql="UPDATE users SET school_id=".$_POST['school']." WHERE user_id=".$_SESSION['user'];
+	$sth=$dbh->prepare($sql);
+	$sth->execute();
+	$row = $sth->fetchAll();
+	
+	?>
+        <script>alert('School Updated');</script>
+    <?php
+	
+	
+}
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Admin Tools - <?php echo $userRow['user_email']; ?></title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<?php
+include 'include/header.php';
+include 'include/nav.php';
+?>
+
+<div id="body">
+
+<h3>Set School you teach at.</h3>
+<form method="post">
+<select name="school"> 
+	<?php
+	$sql = "SELECT school_id FROM users WHERE user_id=".$_SESSION['user'];
+	$sth=$dbh->prepare($sql);
+	$sth->execute();
+	$school_id = $sth->fetchAll();
+	print_r($school_id);
+	
+	
+	$sql = "SELECT school_id, school_name FROM schools WHERE school_id=".$school_id[0][0];
+	$sth=$dbh->prepare($sql);
+	$sth->execute();
+	$school = $sth->fetchAll();
+	print_r($school);
+	echo "<option value='".$school_id[0][0]."'>".$school[0][1]."</option>\n";
+	?>
+
+  <option value="0">No School</option>
+  
+  <?php
+  $sql = "SELECT school_id, school_name FROM schools";
+	$sth=$dbh->prepare($sql);
+	$sth->execute();
+	$schools = $sth->fetchAll();
+	
+	foreach ($schools as $school){
+		echo "<option value='$school[0]'>$school[1]</option>\n";
+	}
+	
+  ?>
+  
+  
+  
+</select>
+<button type="submit" name="btn-save-school">Save</button>
+</form>
+	
+	<?php 
+	if ($_SESSION['user_type'] == 'standard'){
+		
+	}
+	
+	if ($_SESSION['user_type'] == 'admin' OR $_SESSION['user_type'] == 'super_admin'){
+		
+	}
+	
+	if ($_SESSION['user_type'] == 'super_admin'){
+		?>
+		<br>
+		<h1>Admin Tools</h1>
+		
+		<?php
+	}
+	?>
+	
+</div>
+
+</body>
+</html>

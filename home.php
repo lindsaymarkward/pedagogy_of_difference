@@ -25,13 +25,11 @@ if(!isset($_SESSION['user']))
 <body>
 <?php
 include 'include/header.php';
+include 'include/nav.php';
 ?>
 
 <div id="body">
-	<h2><a href='index.php'>Home</a></h2>
-	<h2><a href='http://edwardsdean.net/jcu/limesurvey/index.php/764745?lang=en?UserID=<?php echo $_SESSION['user'] ?>'>Take Survey</a></h2>
 	
-	<h2><a href='results.php'>My Results</a></h2>
 	
 	
 </div>

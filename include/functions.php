@@ -24,4 +24,13 @@ function get_column_color($value){
 		return '#44c51f';
 	}
 }
+
+
+function to_date($date_as_string){
+	$date_format = "Y-m-d H:i:s";
+	$date_as_string = "2016-05-10 08:12:03";
+	//$date = DateTime::createFromFormat($date_format, $date_as_string);
+	
+	return DateTime::createFromFormat($date_format, $date_as_string);
+}
 ?>

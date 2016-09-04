@@ -26,7 +26,7 @@ if(isset($_POST['btn-signup']))
 	
 	
 	if(empty($count)){
-		$sql = "INSERT INTO users(user_name,user_email,user_pass, school_id) VALUES('$uname','$email','$upass', 0)";
+		$sql = "INSERT INTO users(user_name,user_email,user_pass, school_id, user_type) VALUES('$uname','$email','$upass', 0, 'standard')";
 		$sth = $dbh->prepare($sql);
 		$sql_success = $sth->execute();
 		
