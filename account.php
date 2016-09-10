@@ -2,6 +2,7 @@
 session_name('main_site');
 session_start();
 include_once 'dbconnect.php';
+include_once 'include/functions.php';
 
 if(!isset($_SESSION['user']))
 {
@@ -95,11 +96,47 @@ include 'include/nav.php';
 	}
 	
 	if ($_SESSION['user_type'] == 'super_admin'){
+		
+		if(isset($_POST['btn-find-user']) or isset($_POST['btn-change-user-level'])){
+			$user_email = escape($_POST['email']);
+		}
+		
 		?>
 		<br>
 		<h1>Admin Tools</h1>
-		
+		<h3>Search for user</h3>
+		<form method="post">
+		Email: <input type="text" name="email" value="<?php if (isset($user_email)) echo $user_email;?>"><br>
+		<button type="submit" name="btn-find-user">Search</button>
+		</form>
+		<br>
 		<?php
+		if(isset($_POST['btn-change-user-level'])){
+				$sql = "UPDATE users SET user_type='".$_POST['user_level']."' WHERE user_email ='".$user_email."'";
+				$sth=$dbh->prepare($sql);
+				$sth->execute();
+				$test = $sth->fetchAll();
+				?> <script>alert('User status updated');</script> <?php
+			}
+		if (isset($user_email) or isset($_POST['btn-change-user-level'])){
+			$sql = "SELECT * FROM users WHERE user_email ='".$user_email."'";
+			$sth=$dbh->prepare($sql);
+			$sth->execute();
+			$user = $sth->fetchAll();
+			$user = $user[0];
+			
+			?>
+			<h3>Change user access level</h3>
+			<form method="post">
+			<input type="hidden" name="email" value="<?php echo $user['user_email']?>">
+			<input type="radio" name="user_level" value="standard" <?php if ($user['user_type'] == 'standard') echo 'checked';?>>Standard <br>
+			<input type="radio" name="user_level" value="admin" <?php if ($user['user_type'] == 'admin') echo 'checked';?>>Admin <br>
+			<input type="radio" name="user_level" value="super_admin" <?php if ($user['user_type'] == 'super_admin') echo 'checked';?>>Super Admin <br>
+			<button type="submit" name="btn-change-user-level">Submit</button>
+			</form>
+			<?php
+			
+		}
 	}
 	?>
 	
