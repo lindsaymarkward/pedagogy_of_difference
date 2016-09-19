@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 04, 2016 at 03:05 PM
+-- Generation Time: Sep 19, 2016 at 10:29 AM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `historic_school_survey_data` (
   `num_of_users` int(11) NOT NULL,
   `time_processed` text NOT NULL,
   PRIMARY KEY (`historic_school_survey_data_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `historic_school_survey_data`
@@ -58,7 +58,11 @@ INSERT INTO `historic_school_survey_data` (`historic_school_survey_data_id`, `AV
 (7, 3.0833333333333, 3.0833333333333, 2.7272727272727, 3.2222222222222, 2.9214285714286, 3.3571428571429, 2.8, 21, 2, '2016-09-04 14:21:18'),
 (8, 3.0833333333333, 3.0833333333333, 2.7272727272727, 3.2222222222222, 2.9214285714286, 3.3571428571429, 2.8, 21, 2, '2016-09-04 14:43:59'),
 (9, 3.0833333333333, 3.0833333333333, 2.7272727272727, 3.2222222222222, 2.9214285714286, 3.3571428571429, 2.8, 21, 2, '2016-09-04 14:47:57'),
-(10, 3.0833333333333, 3.0833333333333, 2.7272727272727, 3.2222222222222, 2.9214285714286, 3.3571428571429, 2.8, 21, 2, '2016-09-04 14:57:20');
+(10, 3.0833333333333, 3.0833333333333, 2.7272727272727, 3.2222222222222, 2.9214285714286, 3.3571428571429, 2.8, 21, 2, '2016-09-04 14:57:20'),
+(11, 2.7222222222222, 2.8888888888889, 2.7575757575758, 2.8148148148148, 2.6619047619047, 3.6190476190476, 2.7111111111111, 21, 3, '2016-09-04 15:23:13'),
+(12, 2.7222222222222, 2.8888888888889, 2.7575757575758, 2.8148148148148, 2.6619047619047, 3.6190476190476, 2.7111111111111, 21, 3, '2016-09-06 03:37:53'),
+(13, 2.7222222222222, 2.8888888888889, 2.7575757575758, 2.8148148148148, 2.6619047619047, 3.6190476190476, 2.7111111111111, 21, 3, '2016-09-14 12:37:00'),
+(14, 2.7222222222222, 2.8888888888889, 2.7575757575758, 2.8148148148148, 2.6619047619047, 3.6190476190476, 2.7111111111111, 21, 3, '2016-09-18 12:20:34');
 
 -- --------------------------------------------------------
 
@@ -141,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `historic_survey_data` (
   `school_id` int(11) NOT NULL,
   `time_finished` text NOT NULL,
   PRIMARY KEY (`historic_survey_data_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `historic_survey_data`
@@ -192,7 +196,9 @@ INSERT INTO `historic_survey_data` (`historic_survey_data_id`, `A1`, `A2`, `A3`,
 (47, 3, 3, 4, 3, 3, 3, 3, 3, 5, 5, 4, 4, 4, 3, 3, 4, 4, 4, 4, 5, 4, 4, 3, 4, 5, 4, 5, 4, 4, 5, 4, 5, 4, 5, 4, 4, 4, 4, 3, 4, 4, 4, 3, 5, 4, 5, 4, 3, 4, 3, 4, 3, 3, 4, 3, 4, 4, 4, 3, 3, 5, 3.1666666666667, 4, 3.8181818181818, 4.4444444444444, 4, 4.1428571428571, 3.6, 25, 0, '2016-09-01 23:40:07'),
 (48, 3, 3, 5, 3, 4, 3, 5, 4, 4, 5, 4, 5, 4, 4, 4, 4, 5, 4, 4, 4, 3, 4, 4, 5, 5, 4, 4, 5, 5, 5, 4, 5, 3, 5, 5, 4, 5, 5, 5, 5, 4, 3, 4, 4, 5, 5, 5, 5, 4, 4, 4, 4, 4, 5, 3, 5, 4, 4, 4, 3, 5, 3.5, 4.5, 4, 4.6666666666667, 4.5714285714286, 4.2857142857143, 4.2, 35, 0, '2016-09-01 23:50:40'),
 (49, 3, 2, 3, 2, 2, 1, 5, 5, 5, 5, 5, 5, 5, 4, 5, 4, 5, 4, 5, 4, 4, 5, 5, 4, 5, 5, 5, 5, 4, 5, 5, 5, 3, 5, 3, 3, 3, 4, 5, 5, 5, 3, 4, 4, 5, 5, 4, 4, 5, 4, 4, 4, 4, 5, 4, 5, 5, 5, 3, 4, 4, 2.1666666666667, 5, 4.5454545454545, 4.7777777777778, 3.7142857142857, 4.4285714285714, 4.2666666666667, 34, 0, '2016-09-02 00:05:06'),
-(50, 2, 3, 2, 2, 4, 2, 4, 2, 4, 3, 2, 3, 2, 3, 3, 2, 5, 3, 4, 2, 3, 2, 4, 2, 2, 2, 2, 4, 3, 3, 3, 3, 3, 3, 4, 2, 3, 4, 3, 3, 2, 3, 2, 3, 4, 2, 3, 4, 4, 4, 4, 4, 2, 4, 3, 3, 3, 2, 2, 4, 2, 2.5, 4, 2, 4, 2.7, 3, 3, 2, 21, '2016-05-14 08:12:03');
+(50, 2, 3, 2, 2, 4, 2, 4, 2, 4, 3, 2, 3, 2, 3, 3, 2, 5, 3, 4, 2, 3, 2, 4, 2, 2, 2, 2, 4, 3, 3, 3, 3, 3, 3, 4, 2, 3, 4, 3, 3, 2, 3, 2, 3, 4, 2, 3, 4, 4, 4, 4, 4, 2, 4, 3, 3, 3, 2, 2, 4, 2, 2.5, 4, 2, 4, 2.7, 3, 3, 2, 21, '2016-05-14 08:12:03'),
+(51, 2, 4, 3, 1, 1, 1, 3, 4, 2, 1, 4, 1, 5, 2, 5, 1, 1, 4, 5, 3, 1, 1, 3, 1, 2, 1, 2, 1, 1, 4, 4, 2, 3, 1, 1, 2, 2, 3, 3, 5, 2, 5, 5, 3, 5, 4, 1, 2, 4, 5, 1, 1, 1, 3, 4, 5, 1, 3, 2, 1, 4, 2, 2.5, 2.8181818181818, 2, 2.1428571428571, 4.1428571428571, 2.5333333333333, 49, 21, '2016-09-04 15:22:22'),
+(52, 4, 1, 4, 1, 2, 3, 3, 4, 4, 5, 4, 4, 5, 4, 4, 2, 4, 4, 3, 3, 2, 5, 4, 4, 5, 5, 3, 3, 4, 5, 3, 4, 2, 4, 3, 4, 3, 4, 4, 4, 4, 3, 4, 4, 3, 3, 4, 4, 4, 3, 3, 4, 3, 3, 3, 5, 5, 4, 4, 3, 5, 2.5, 4, 3.6363636363636, 4, 3.4285714285714, 3.5714285714286, 3.8, 50, 0, '2016-09-15 05:33:03');
 
 -- --------------------------------------------------------
 
@@ -262,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_type` text NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_email` (`user_email`)
-) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -272,7 +278,7 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_pass`, `school_
 (1, 'super admin', 'superadmin', '88dc3adf6d41b818d503ee3ea12963ac', 0, 'super_admin'),
 (2, 'Dean Edwards', 'edwardsdean@hotmail.com', '88dc3adf6d41b818d503ee3ea12963ac', 21, 'super_admin'),
 (3, 'Bobby', 'bobby@mail.com', 'dc647eb65e6711e155375218212b3964', 0, 'standard'),
-(4, 'Dean Edwards', 'edwardsdean2@hotmail.com', '88dc3adf6d41b818d503ee3ea12963ac', 21, 'standard'),
+(4, 'Dean Edwards', 'edwardsdean2@hotmail.com', '88dc3adf6d41b818d503ee3ea12963ac', 21, 'admin'),
 (5, '1234', 'jmiln@live.com', '70dc6647b52e2e89471c824ee3cdeaaa', 21, 'standard'),
 (6, 'dean', 'test@edwardsdean.net', '88dc3adf6d41b818d503ee3ea12963ac', 0, 'standard'),
 (7, 'Tayla', 'taylablack@outlook.com', '301b3e72d166c8c2a2c82f4ec340d752', 0, 'standard'),
@@ -280,7 +286,7 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_pass`, `school_
 (9, 'mit', 'c2063707@trbvn.com', 'bc2e8b2ac93b02432d1816f80e26e7e8', 0, 'standard'),
 (10, 'mit1', 'ccm70197@laoeq.com', 'adf877b86e74b48f03b4ba57054eb409', 0, 'standard'),
 (11, 'tcn86752@laoeq.com', 'tcn86752@laoeq.com', '596f296077447d610b4837920c7a6915', 0, 'standard'),
-(12, 'Brian Lewthwaite', 'brian.lewthwaite@jcu.edu.au', 'b4de82643fc25c06796481722cc174a9', 0, 'standard'),
+(12, 'Brian Lewthwaite', 'brian.lewthwaite@jcu.edu.au', 'b4de82643fc25c06796481722cc174a9', 0, 'super_admin'),
 (13, 'nick', 'nicholasjstewart88@gmail.com', '2ac9cb7dc02b3c0083eb70898e549b63', 0, 'standard'),
 (14, 'Jas', 'jason.mckane@my.jcu.edu.au', 'b9d7bad1ea2a8f258f84f9eb784635cb', 0, 'standard'),
 (15, 'Dominique', 'dominiquesaraobrien@jcu.edu.au', '7be1bb5ade9559a40463b7184f0e1aa5', 0, 'standard'),
@@ -316,7 +322,9 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_pass`, `school_
 (45, 'standard', 'standard', '88dc3adf6d41b818d503ee3ea12963ac', 0, 'standard'),
 (46, 'Ben', 'bennyv_1988@live.com', '16bdcbc8fcf5533f54f64ff9c05bbf5e', 0, 'standard'),
 (47, 'JASON LYNCH', 'jason.lynch@my.jcu.edu.au', '72a97fb793d496318518aebc7e9298b2', 0, 'standard'),
-(48, 'Corey Niehsner', 'hymns4thenonbelieves@hotmail.com', 'cfa590c5b4c51852821cc9a7669cfcd1', 0, 'standard');
+(48, 'Corey Niehsner', 'hymns4thenonbelieves@hotmail.com', 'cfa590c5b4c51852821cc9a7669cfcd1', 0, 'standard'),
+(50, 'Jake Magnusson', 'jake.magnusson@my.jcu.edu.au', '4d4f594dd2a939208c0e794c7eeb441c', 0, 'standard'),
+(49, 'Mitch', 'g2137870@mvrht.com', '6af11c4e1d33e20affa881bbf54c5ecb', 21, 'super_admin');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
