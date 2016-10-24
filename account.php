@@ -85,8 +85,33 @@ include 'include/nav.php';
 </select>
 <button type="submit" name="btn-save-school">Save</button>
 </form>
+<br>
 	
 	<?php 
+	if(isset($_POST['btn-change-my-password'])){
+			$sql = "UPDATE users SET user_pass='".md5(escape($_POST['pass']))."' WHERE user_email ='".$userRow['user_email']."'";
+			$sth=$dbh->prepare($sql);
+			$sth->execute();
+			$test = $sth->fetchAll();
+			?> <script>alert('Password updated');</script> <?php
+		}
+		
+			$sql = "SELECT * FROM users WHERE user_email ='".$userRow['user_email']."'";
+			$sth=$dbh->prepare($sql);
+			$sth->execute();
+			$user = $sth->fetchAll();
+			$user = $user[0];
+			
+			?>
+			<h2>Change my password</h2>
+			<form method="post">
+			<input type="hidden" name="email" value="<?php echo $userRow['user_email']?>">
+			<input type="text" name="pass" placeholder="Password" required />
+			<button type="submit" name="btn-change-my-password">Submit</button>
+			</form>
+			
+			<?php
+		
 	if ($_SESSION['user_type'] == 'standard'){
 		
 	}
@@ -97,7 +122,7 @@ include 'include/nav.php';
 	
 	if ($_SESSION['user_type'] == 'super_admin'){
 		
-		if(isset($_POST['btn-find-user']) or isset($_POST['btn-change-user-level'])){
+		if(isset($_POST['btn-find-user']) or isset($_POST['btn-change-user-level']) or isset($_POST['btn-change-user-password'])){
 			$user_email = escape($_POST['email']);
 		}
 		
@@ -118,7 +143,14 @@ include 'include/nav.php';
 				$test = $sth->fetchAll();
 				?> <script>alert('User status updated');</script> <?php
 			}
-		if (isset($user_email) or isset($_POST['btn-change-user-level'])){
+		if(isset($_POST['btn-change-user-password'])){
+				$sql = "UPDATE users SET user_pass='".md5(escape($_POST['pass']))."' WHERE user_email ='".$user_email."'";
+				$sth=$dbh->prepare($sql);
+				$sth->execute();
+				$test = $sth->fetchAll();
+				?> <script>alert('User password updated');</script> <?php
+			}
+		if (isset($user_email) or isset($_POST['btn-change-user-level']) or isset($_POST['btn-change-user-password'])){
 			$sql = "SELECT * FROM users WHERE user_email ='".$user_email."'";
 			$sth=$dbh->prepare($sql);
 			$sth->execute();
@@ -137,6 +169,39 @@ include 'include/nav.php';
 			<?php
 			
 		}
+		if (isset($user_email) or isset($_POST['btn-change-user-level']) or isset($_POST['btn-change-user-password'])){
+			$sql = "SELECT * FROM users WHERE user_email ='".$user_email."'";
+			$sth=$dbh->prepare($sql);
+			$sth->execute();
+			$user = $sth->fetchAll();
+			$user = $user[0];
+			
+			?>
+			<h3>Change user password</h3>
+			<form method="post">
+			<input type="hidden" name="email" value="<?php echo $user['user_email']?>">
+			<input type="text" name="pass" placeholder="Password" required />
+			<button type="submit" name="btn-change-user-password">Submit</button>
+			</form>
+			<?php
+			
+		}
+		
+		echo"<h2>Stats:</h2> \n";
+		
+		$sql = "SELECT * FROM historic_survey_data"; 
+		$sth=$dbh->prepare($sql);
+		$sth->execute();
+		$survey_data = $sth->fetchAll();
+
+		//print_r($survey_data);
+
+		echo "Number of surveys processed: ";
+		echo count($survey_data);
+		echo "\n <br> \n";
+		echo "Last survey processed on the: ";
+		print_r($survey_data[(count($survey_data)-1)]['time_finished']);
+		
 	}
 	?>
 	

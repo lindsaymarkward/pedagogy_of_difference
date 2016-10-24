@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2016 at 10:29 AM
+-- Generation Time: Oct 24, 2016 at 12:25 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `historic_school_survey_data` (
   `num_of_users` int(11) NOT NULL,
   `time_processed` text NOT NULL,
   PRIMARY KEY (`historic_school_survey_data_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `historic_school_survey_data`
@@ -62,7 +62,9 @@ INSERT INTO `historic_school_survey_data` (`historic_school_survey_data_id`, `AV
 (11, 2.7222222222222, 2.8888888888889, 2.7575757575758, 2.8148148148148, 2.6619047619047, 3.6190476190476, 2.7111111111111, 21, 3, '2016-09-04 15:23:13'),
 (12, 2.7222222222222, 2.8888888888889, 2.7575757575758, 2.8148148148148, 2.6619047619047, 3.6190476190476, 2.7111111111111, 21, 3, '2016-09-06 03:37:53'),
 (13, 2.7222222222222, 2.8888888888889, 2.7575757575758, 2.8148148148148, 2.6619047619047, 3.6190476190476, 2.7111111111111, 21, 3, '2016-09-14 12:37:00'),
-(14, 2.7222222222222, 2.8888888888889, 2.7575757575758, 2.8148148148148, 2.6619047619047, 3.6190476190476, 2.7111111111111, 21, 3, '2016-09-18 12:20:34');
+(14, 2.7222222222222, 2.8888888888889, 2.7575757575758, 2.8148148148148, 2.6619047619047, 3.6190476190476, 2.7111111111111, 21, 3, '2016-09-18 12:20:34'),
+(15, 2.7222222222222, 2.8888888888889, 2.7575757575758, 2.8148148148148, 2.6619047619047, 3.6190476190476, 2.7111111111111, 21, 3, '2016-10-14 03:59:16'),
+(16, 2.7222222222222, 2.8888888888889, 2.7575757575758, 2.8148148148148, 2.6619047619047, 3.6190476190476, 2.7111111111111, 21, 3, '2016-10-24 02:30:29');
 
 -- --------------------------------------------------------
 
@@ -278,7 +280,7 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_pass`, `school_
 (1, 'super admin', 'superadmin', '88dc3adf6d41b818d503ee3ea12963ac', 0, 'super_admin'),
 (2, 'Dean Edwards', 'edwardsdean@hotmail.com', '88dc3adf6d41b818d503ee3ea12963ac', 21, 'super_admin'),
 (3, 'Bobby', 'bobby@mail.com', 'dc647eb65e6711e155375218212b3964', 0, 'standard'),
-(4, 'Dean Edwards', 'edwardsdean2@hotmail.com', '88dc3adf6d41b818d503ee3ea12963ac', 21, 'admin'),
+(4, 'Dean Edwards', 'edwardsdean2@hotmail.com', 'cc03e747a6afbbcbf8be7668acfebee5', 21, 'super_admin'),
 (5, '1234', 'jmiln@live.com', '70dc6647b52e2e89471c824ee3cdeaaa', 21, 'standard'),
 (6, 'dean', 'test@edwardsdean.net', '88dc3adf6d41b818d503ee3ea12963ac', 0, 'standard'),
 (7, 'Tayla', 'taylablack@outlook.com', '301b3e72d166c8c2a2c82f4ec340d752', 0, 'standard'),
@@ -295,7 +297,7 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_pass`, `school_
 (18, 'Kaitlyn', 'kaitlyn.hotz@my.jcu.edu.au', 'f731bc938f52619153920d2bd57bb4a1', 0, 'standard'),
 (19, 'Lukas Sabo', 'lukassabo1989@gmail.com', 'f3f8cda453c9401a9b1d510091373b50', 0, 'standard'),
 (20, 'Gerry Escalada', 'gerry.escalada@my.jcu.edu.a', '51a1c13e650783ad94739deaa2a23bac', 0, 'standard'),
-(21, '', '', 'd41d8cd98f00b204e9800998ecf8427e', 0, 'standard'),
+(21, '', '', 'cc03e747a6afbbcbf8be7668acfebee5', 0, 'standard'),
 (22, 'Braden Askin', 'bg_askin92@hotmail.com', '40ed76a55bfc870736b68e5442feebaf', 0, 'standard'),
 (23, 'Jordan Russo', 'jordan.russo@my.jcu.edu.au', '33293a38fa641e1829f00f3628aac5db', 0, 'standard'),
 (24, 'Jake Magnusson', 'magnojake@hotmail.com', '4d4f594dd2a939208c0e794c7eeb441c', 0, 'standard'),
